@@ -127,6 +127,16 @@ class ManageSettings extends Page implements HasForms
                                     ->columnSpanFull(),
                             ])
                             ->columns(2),
+                        Forms\Components\Tabs\Tab::make('Pages')
+                            ->schema([
+                                Forms\Components\TextInput::make('industries_heading')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('industries_intro')->rows(3)->columnSpanFull(),
+                                Forms\Components\RichEditor::make('industries_body')->columnSpanFull(),
+                                Forms\Components\RichEditor::make('privacy_body')->columnSpanFull(),
+                                Forms\Components\RichEditor::make('terms_body')->columnSpanFull(),
+                                Forms\Components\TextInput::make('home_cta_heading')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('home_cta_body')->rows(3)->columnSpanFull(),
+                            ]),
                     ])
                     ->columnSpanFull(),
             ])

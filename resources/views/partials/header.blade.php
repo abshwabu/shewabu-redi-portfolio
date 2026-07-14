@@ -61,7 +61,7 @@
         {{-- Mobile hamburger --}}
         <button
             type="button"
-            class="inline-flex items-center justify-center p-2 text-primary lg:hidden"
+            class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
             @click="open = !open"
             :aria-expanded="open.toString()"
             aria-controls="mobile-nav"
@@ -96,7 +96,7 @@
                     href="{{ route($link['route']) }}"
                     @click="open = false"
                     @class([
-                        'px-3 py-3 text-base font-semibold transition-colors',
+                        'min-h-11 px-3 py-3 text-base font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent',
                         'bg-primary-50 text-primary border-l-2 border-accent' => request()->routeIs($link['route']) || (str_starts_with($link['route'], 'services') && request()->routeIs('services.*')),
                         'text-surface-700 hover:bg-surface-100 hover:text-primary' => ! (request()->routeIs($link['route']) || (str_starts_with($link['route'], 'services') && request()->routeIs('services.*'))),
                     ])
@@ -107,7 +107,7 @@
             <a
                 href="{{ route('contact') }}"
                 @click="open = false"
-                class="mt-2 inline-flex items-center justify-center bg-primary px-4 py-3 text-sm font-semibold text-surface-50"
+                class="mt-2 inline-flex min-h-11 items-center justify-center bg-primary px-4 py-3 text-sm font-semibold text-surface-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
                 Get in Touch
             </a>

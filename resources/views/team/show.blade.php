@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $member->name.' | Shewabu Redi Mohammed Authorized Accounting Firm')
+@section('title', $member->name.' | '.$siteSettings->firm_name)
 @section('meta_description', strip_tags(\Illuminate\Support\Str::limit($member->bio ?? $member->role, 160)))
+@section('og_image', $member->photoUrl() ?? '')
+@section('og_type', 'profile')
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -12,7 +14,14 @@
             </a>
             <div class="mt-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
                 @if ($member->photoUrl())
-                    <img src="{{ $member->photoUrl() }}" alt="" class="h-36 w-36 shrink-0 rounded-full object-cover ring-4 ring-accent/40 sm:h-44 sm:w-44">
+                    <x-firm-img
+                        :src="$member->photoUrl()"
+                        :alt="$member->name"
+                        :lazy="false"
+                        width="176"
+                        height="176"
+                        class="h-36 w-36 shrink-0 rounded-full object-cover ring-4 ring-accent/40 sm:h-44 sm:w-44"
+                    />
                 @else
                     <span class="flex h-36 w-36 shrink-0 items-center justify-center rounded-full bg-accent font-display text-4xl font-bold text-primary ring-4 ring-accent/40 sm:h-44 sm:w-44">
                         {{ collect(explode(' ', $member->name))->map(fn ($part) => strtoupper(substr($part, 0, 1)))->take(2)->implode('') }}

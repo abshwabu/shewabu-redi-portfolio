@@ -8,6 +8,7 @@ use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\InsightController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,5 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');

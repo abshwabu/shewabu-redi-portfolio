@@ -19,8 +19,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useTailwind();
 
-        View::composer(['layouts.app', 'partials.header', 'partials.footer'], function ($view): void {
-            $view->with('siteSettings', SiteSetting::current());
+        View::composer('*', function ($view): void {
+            if (! array_key_exists('siteSettings', $view->getData())) {
+                $view->with('siteSettings', SiteSetting::current());
+            }
+        });
+
+        View::composer(['layouts.app', 'partials.footer'], function ($view): void {
             $view->with(
                 'footerServices',
                 Service::query()->published()->ordered()->limit(5)->get()

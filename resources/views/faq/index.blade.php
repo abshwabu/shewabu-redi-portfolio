@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'FAQ | Shewabu Redi Mohammed Authorized Accounting Firm')
-@section('meta_description', 'Frequently asked questions about audit, tax, and advisory services at Shewabu Redi Mohammed Authorized Accounting Firm.')
+@section('title', 'FAQ | '.$siteSettings->firm_name)
+@section('meta_description', 'Frequently asked questions about services and engagements at '.$siteSettings->firm_name.'.')
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">

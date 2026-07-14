@@ -1,11 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy | Shewabu Redi Mohammed Authorized Accounting Firm')
+@section('title', 'Privacy Policy | '.$settings->firm_name)
+@section('meta_description', 'Privacy policy for '.$settings->firm_name.'.')
+@section('robots', 'noindex,follow')
 
 @section('content')
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-accent">Placeholder</p>
-        <h1 class="mt-3 font-display text-3xl font-bold text-primary sm:text-4xl">Privacy Policy</h1>
-        <p class="mt-4 max-w-2xl text-surface-600">Page content will be added in a later phase.</p>
-    </div>
+    <section class="section-pad bg-surface-50">
+        <div class="section-shell max-w-4xl">
+            <p class="eyebrow">Legal</p>
+            <h1 class="section-title">Privacy Policy</h1>
+            <article class="surface-card mt-10 prose-firm text-surface-700">
+                @if (filled($settings->privacy_body))
+                    {!! $settings->privacy_body !!}
+                @else
+                    <p>Privacy policy content can be managed from the admin settings panel.</p>
+                @endif
+            </article>
+        </div>
+    </section>
 @endsection

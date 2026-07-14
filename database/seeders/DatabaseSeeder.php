@@ -71,6 +71,13 @@ class DatabaseSeeder extends Seeder
             'seo_title' => 'Shewabu Redi Mohammed Authorized Accounting Firm',
             'seo_description' => 'Professional audit, taxation, bookkeeping, payroll, and business advisory services in Addis Ababa, Ethiopia.',
             'seo_keywords' => 'accounting firm, audit, tax advisory, bookkeeping, Addis Ababa',
+            'industries_heading' => 'Industries we serve',
+            'industries_intro' => 'Sector experience across trading, professional services, NGOs, and growing enterprises in Ethiopia.',
+            'industries_body' => '<p>We support clients in retail and distribution, manufacturing, professional services, hospitality, construction, and non-profit organizations. Our teams adapt audit, tax, and accounting approaches to sector-specific reporting cycles and regulatory expectations.</p><ul><li><strong>Trading &amp; distribution</strong> — inventory, VAT, and working-capital reporting.</li><li><strong>Professional services</strong> — partner remuneration, WHT, and engagement profitability.</li><li><strong>NGOs &amp; associations</strong> — grant accounting and donor reporting.</li><li><strong>Growing SMEs</strong> — scalable bookkeeping and filing discipline.</li></ul>',
+            'privacy_body' => '<p>Shewabu Redi Mohammed Authorized Accounting Firm respects your privacy. Information submitted through our website contact form is used only to respond to your enquiry and manage our professional relationship. We do not sell personal data.</p><p>We retain contact submissions for as long as needed to handle your request and meet professional record-keeping obligations. You may request access to or correction of your personal information by emailing us at info@shewaburedi.com.</p>',
+            'terms_body' => '<p>This website provides general information about our firm and services. It does not constitute professional advice. Engagements are governed by separate engagement letters agreed with clients.</p><p>Content on this site may be updated without notice. By using this website you agree not to misuse forms, attempt unauthorized access, or reproduce materials without permission.</p>',
+            'home_cta_heading' => 'Ready for clearer books and stronger compliance?',
+            'home_cta_body' => 'Tell us about your filing calendar, audit needs, or growth plans — we will respond with a focused next step.',
         ]);
     }
 

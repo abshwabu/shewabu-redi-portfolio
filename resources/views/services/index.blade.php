@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Services | Shewabu Redi Mohammed Authorized Accounting Firm')
-@section('meta_description', 'Explore tax advisory, audit and assurance, bookkeeping, payroll, financial consulting, and business registration services.')
+@section('title', 'Services | '.$siteSettings->firm_name)
+@section('meta_description', $siteSettings->seo_description)
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -20,7 +20,13 @@
             @forelse ($services as $service)
                 <article class="surface-card surface-card-hover flex h-full flex-col">
                     @if ($service->imageUrl())
-                        <img src="{{ $service->imageUrl() }}" alt="" class="mb-5 h-40 w-full rounded-lg object-cover">
+                        <x-firm-img
+                            :src="$service->imageUrl()"
+                            :alt="$service->title"
+                            width="640"
+                            height="160"
+                            class="mb-5 h-40 w-full rounded-lg object-cover"
+                        />
                     @else
                         <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-lg bg-primary-50 text-primary">
                             @include('partials.service-icon', ['icon' => $service->icon, 'class' => 'h-7 w-7'])

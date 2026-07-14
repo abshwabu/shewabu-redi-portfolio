@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Our Team | Shewabu Redi Mohammed Authorized Accounting Firm')
-@section('meta_description', 'Meet the audit, tax, and advisory professionals at Shewabu Redi Mohammed Authorized Accounting Firm.')
+@section('title', 'Our Team | '.$siteSettings->firm_name)
+@section('meta_description', 'Meet the audit, tax, and advisory professionals at '.$siteSettings->firm_name.'.')
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -22,11 +22,13 @@
                     <article class="surface-card surface-card-hover flex h-full flex-col text-center">
                         <a href="{{ route('team.show', $member) }}" class="group flex flex-1 flex-col">
                             @if ($member->photoUrl())
-                                <img
-                                    src="{{ $member->photoUrl() }}"
-                                    alt=""
+                                <x-firm-img
+                                    :src="$member->photoUrl()"
+                                    :alt="$member->name"
+                                    width="176"
+                                    height="176"
                                     class="mx-auto h-40 w-40 rounded-full object-cover ring-4 ring-surface-100 transition group-hover:ring-accent/30 sm:h-44 sm:w-44"
-                                >
+                                />
                             @else
                                 <span class="mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-primary font-display text-3xl font-bold text-surface-50 ring-4 ring-surface-100 transition group-hover:ring-accent/30 sm:h-44 sm:w-44">
                                     {{ collect(explode(' ', $member->name))->map(fn ($part) => strtoupper(substr($part, 0, 1)))->take(2)->implode('') }}
@@ -34,7 +36,7 @@
                             @endif
                             <h2 class="mt-5 font-display text-xl font-bold text-primary transition group-hover:text-primary-700">{{ $member->name }}</h2>
                             @if ($member->role)
-                                <p class="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-accent">{{ $member->role }}</p>
+                                <p class="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-accent-700">{{ $member->role }}</p>
                             @endif
                             <span class="btn-ghost mx-auto mt-5">
                                 View profile

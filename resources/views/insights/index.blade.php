@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Insights | Shewabu Redi Mohammed Authorized Accounting Firm')
-@section('meta_description', 'Articles on tax, audit, compliance, and business finance from Shewabu Redi Mohammed Authorized Accounting Firm.')
+@section('title', 'Insights | '.$siteSettings->firm_name)
+@section('meta_description', $siteSettings->seo_description)
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -22,7 +22,13 @@
                     <article class="surface-card surface-card-hover flex h-full flex-col overflow-hidden p-0">
                         <a href="{{ route('insights.show', $post) }}" class="group flex h-full flex-col">
                             @if ($post->featuredImageUrl())
-                                <img src="{{ $post->featuredImageUrl() }}" alt="" class="h-44 w-full object-cover transition duration-300 group-hover:scale-[1.02] sm:h-48">
+                                <x-firm-img
+                                    :src="$post->featuredImageUrl()"
+                                    :alt="$post->title"
+                                    width="640"
+                                    height="176"
+                                    class="h-44 w-full object-cover transition duration-300 group-hover:scale-[1.02] sm:h-48"
+                                />
                             @else
                                 <div class="flex h-44 items-center justify-center bg-primary-50 text-primary sm:h-48">
                                     <svg class="h-12 w-12 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.25" aria-hidden="true">

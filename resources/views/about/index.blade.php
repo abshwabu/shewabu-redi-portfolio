@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'About | Shewabu Redi Mohammed Authorized Accounting Firm')
-@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($settings->about_excerpt ?: ''), 155))
+@section('title', 'About | '.$siteSettings->firm_name)
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($siteSettings->about_excerpt ?: $siteSettings->seo_description), 155))
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -85,7 +85,13 @@
                 @foreach ($teamPreview as $member)
                     <article class="surface-card surface-card-hover text-center">
                         @if ($member->photoUrl())
-                            <img src="{{ $member->photoUrl() }}" alt="{{ $member->name }}" class="mx-auto h-24 w-24 rounded-full object-cover shadow-card">
+                            <x-firm-img
+                                :src="$member->photoUrl()"
+                                :alt="$member->name"
+                                width="96"
+                                height="96"
+                                class="mx-auto h-24 w-24 rounded-full object-cover shadow-card"
+                            />
                         @else
                             <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary font-display text-xl font-bold text-accent shadow-card">
                                 {{ collect(explode(' ', $member->name))->map(fn ($p) => mb_substr($p, 0, 1))->take(2)->implode('') }}

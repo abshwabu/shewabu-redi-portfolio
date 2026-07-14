@@ -1,18 +1,22 @@
 @extends('layouts.app')
 
-@section('title', $settings->seo_title ?: 'Home | Shewabu Redi Mohammed Authorized Accounting Firm')
+@section('title', $settings->seo_title ?: ('Home | '.$settings->firm_name))
 @section('meta_description', $settings->seo_description ?: $settings->hero_subheading)
+@section('og_image', $settings->ogImageUrl() ?? $settings->heroImageUrl() ?? '')
 
 @section('content')
     {{-- Hero: full-bleed brand composition --}}
     <section class="relative overflow-hidden bg-primary text-surface-50">
         <div class="absolute inset-0">
             @if ($settings->heroImageUrl())
-                <img
-                    src="{{ $settings->heroImageUrl() }}"
-                    alt=""
+                <x-firm-img
+                    :src="$settings->heroImageUrl()"
+                    :alt="$settings->hero_heading ?: 'Shewabu Redi accounting firm'"
+                    :lazy="false"
+                    width="1920"
+                    height="1080"
                     class="h-full w-full object-cover opacity-45"
-                >
+                />
             @else
                 <div class="h-full w-full bg-[radial-gradient(circle_at_20%_20%,rgba(201,162,39,0.28),transparent_42%),linear-gradient(135deg,#0B2545_0%,#15334E_48%,#071828_100%)]"></div>
             @endif
@@ -143,10 +147,10 @@
                         <h2 class="section-title">What clients say</h2>
                     </div>
                     <div class="flex gap-2">
-                        <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent" @click="prev()" aria-label="Previous testimonial">
+                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="prev()" aria-label="Previous testimonial">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
                         </button>
-                        <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent" @click="next()" aria-label="Next testimonial">
+                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="next()" aria-label="Next testimonial">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
                         </button>
                     </div>
@@ -166,7 +170,13 @@
                                 <div class="surface-card mx-auto max-w-4xl border-accent/20 bg-white shadow-card">
                                     <div class="flex items-start gap-4">
                                         @if ($testimonial->photoUrl())
-                                            <img src="{{ $testimonial->photoUrl() }}" alt="" class="h-14 w-14 rounded-full object-cover">
+                                            <x-firm-img
+                                                :src="$testimonial->photoUrl()"
+                                                :alt="$testimonial->client_name"
+                                                width="56"
+                                                height="56"
+                                                class="h-14 w-14 rounded-full object-cover"
+                                            />
                                         @else
                                             <div class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-sm font-bold text-accent">
                                                 {{ collect(explode(' ', $testimonial->client_name))->map(fn ($p) => mb_substr($p, 0, 1))->take(2)->implode('') }}
@@ -194,11 +204,17 @@
                     @foreach ($testimonials as $index => $testimonial)
                         <button
                             type="button"
-                            class="h-2.5 w-2.5 rounded-full transition"
-                            :class="active === {{ $index }} ? 'bg-accent w-6' : 'bg-surface-300'"
+                            class="inline-flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                             @click="go({{ $index }})"
+                            :aria-current="active === {{ $index }} ? 'true' : 'false'"
                             aria-label="Show testimonial {{ $index + 1 }}"
-                        ></button>
+                        >
+                            <span
+                                class="block rounded-full transition-all"
+                                :class="active === {{ $index }} ? 'h-2.5 w-6 bg-accent' : 'h-2.5 w-2.5 bg-surface-300'"
+                                aria-hidden="true"
+                            ></span>
+                        </button>
                     @endforeach
                 </div>
             </div>
@@ -210,8 +226,8 @@
         <div class="section-shell grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
                 <p class="eyebrow text-accent">Next step</p>
-                <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Ready for clearer books and stronger compliance?</h2>
-                <p class="mt-4 max-w-xl text-primary-100">Tell us about your filing calendar, audit needs, or growth plans — we will respond with a focused next step.</p>
+                <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">{{ $settings->home_cta_heading ?: 'Ready for clearer books and stronger compliance?' }}</h2>
+                <p class="mt-4 max-w-xl text-primary-100">{{ $settings->home_cta_body ?: 'Tell us about your filing calendar, audit needs, or growth plans — we will respond with a focused next step.' }}</p>
             </div>
             <div class="flex flex-wrap gap-4 lg:justify-end">
                 <a href="{{ route('contact') }}" class="btn-primary">Book a consultation</a>

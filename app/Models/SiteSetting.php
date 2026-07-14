@@ -46,6 +46,13 @@ class SiteSetting extends Model
         'seo_description',
         'seo_keywords',
         'og_image',
+        'privacy_body',
+        'terms_body',
+        'industries_heading',
+        'industries_intro',
+        'industries_body',
+        'home_cta_heading',
+        'home_cta_body',
     ];
 
     public static function current(): self
@@ -70,6 +77,16 @@ class SiteSetting extends Model
     public function heroImageUrl(): ?string
     {
         return $this->publicUrl($this->hero_image);
+    }
+
+    public function ogImageUrl(): ?string
+    {
+        return $this->publicUrl($this->og_image);
+    }
+
+    public function faviconUrl(): ?string
+    {
+        return $this->publicUrl($this->favicon);
     }
 
     public function getGoogleMapsEmbedAttribute(): ?string

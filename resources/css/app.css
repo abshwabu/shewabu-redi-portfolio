@@ -10,6 +10,15 @@
     body {
         @apply bg-surface-50 font-sans text-surface-800;
     }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+        @apply outline-2 outline-offset-2 outline-accent;
+    }
 }
 
 @layer components {
@@ -22,7 +31,7 @@
     }
 
     .eyebrow {
-        @apply text-sm font-semibold uppercase tracking-[0.16em] text-accent;
+        @apply text-sm font-semibold uppercase tracking-[0.16em] text-accent-700;
     }
 
     .section-title {
@@ -50,7 +59,7 @@
     }
 
     .btn-ghost {
-        @apply inline-flex items-center gap-2 text-sm font-semibold text-primary transition duration-200 hover:text-accent;
+        @apply inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-primary transition duration-200 hover:text-accent-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
     }
 
     .prose-firm {
@@ -67,6 +76,16 @@
 
     .fade-up-late {
         animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+    }
+
+    .sr-only {
+        @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    .focus\:not-sr-only:focus {
+        @apply static m-0 h-auto w-auto overflow-visible whitespace-normal p-0;
+        clip: auto;
     }
 }
 

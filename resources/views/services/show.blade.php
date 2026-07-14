@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $service->meta_title ?: ($service->title.' | Shewabu Redi Mohammed Authorized Accounting Firm'))
+@section('title', $service->meta_title ?: ($service->title.' | '.$siteSettings->firm_name))
 @section('meta_description', $service->meta_description ?: $service->summary)
+@section('og_image', $service->imageUrl() ?? '')
+@section('og_type', 'article')
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -24,7 +26,13 @@
         <div class="section-shell grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
             <article class="surface-card">
                 @if ($service->imageUrl())
-                    <img src="{{ $service->imageUrl() }}" alt="" class="mb-8 h-64 w-full rounded-lg object-cover sm:h-80">
+                    <x-firm-img
+                        :src="$service->imageUrl()"
+                        :alt="$service->title"
+                        width="800"
+                        height="320"
+                        class="mb-8 h-64 w-full rounded-lg object-cover sm:h-80"
+                    />
                 @endif
                 <div class="prose-firm text-surface-700">
                     {!! $service->body !!}

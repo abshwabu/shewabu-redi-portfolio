@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $post->meta_title ?: ($post->title.' | Shewabu Redi Mohammed Authorized Accounting Firm'))
+@section('title', $post->meta_title ?: ($post->title.' | '.$siteSettings->firm_name))
 @section('meta_description', $post->meta_description ?: $post->excerpt)
+@section('og_image', $post->featuredImageUrl() ?? '')
+@section('og_type', 'article')
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
@@ -39,7 +41,13 @@
     <section class="section-pad bg-surface-50">
         <div class="section-shell max-w-4xl">
             @if ($post->featuredImageUrl())
-                <img src="{{ $post->featuredImageUrl() }}" alt="" class="mb-10 h-64 w-full rounded-lg object-cover sm:h-80 lg:h-96">
+                <x-firm-img
+                    :src="$post->featuredImageUrl()"
+                    :alt="$post->title"
+                    width="1200"
+                    height="384"
+                    class="mb-10 h-64 w-full rounded-lg object-cover sm:h-80 lg:h-96"
+                />
             @endif
             <article class="surface-card">
                 <div class="prose-firm text-surface-700">
