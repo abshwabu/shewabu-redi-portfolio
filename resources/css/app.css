@@ -11,3 +11,80 @@
         @apply bg-surface-50 font-sans text-surface-800;
     }
 }
+
+@layer components {
+    .section-shell {
+        @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .section-pad {
+        @apply py-16 sm:py-20 lg:py-24;
+    }
+
+    .eyebrow {
+        @apply text-sm font-semibold uppercase tracking-[0.16em] text-accent;
+    }
+
+    .section-title {
+        @apply mt-3 font-display text-3xl font-bold tracking-tight text-primary sm:text-4xl;
+    }
+
+    .section-lead {
+        @apply mt-4 max-w-2xl text-base leading-relaxed text-surface-600 sm:text-lg;
+    }
+
+    .surface-card {
+        @apply rounded-xl border border-surface-200/80 bg-white p-6 shadow-[0_10px_30px_-18px_rgba(11,37,69,0.45)] transition duration-300;
+    }
+
+    .surface-card-hover {
+        @apply hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_18px_40px_-20px_rgba(11,37,69,0.55)];
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center bg-accent px-5 py-3 text-sm font-semibold text-primary transition duration-200 hover:bg-accent-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center border border-primary-200 bg-white/10 px-5 py-3 text-sm font-semibold text-surface-50 transition duration-200 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center gap-2 text-sm font-semibold text-primary transition duration-200 hover:text-accent;
+    }
+
+    .prose-firm {
+        @apply prose prose-neutral max-w-none prose-headings:font-display prose-headings:text-primary prose-a:text-accent prose-strong:text-primary;
+    }
+
+    .fade-up {
+        animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .fade-up-delayed {
+        animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+    }
+
+    .fade-up-late {
+        animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-up,
+    .fade-up-delayed,
+    .fade-up-late {
+        animation: none;
+    }
+}

@@ -34,6 +34,15 @@ class Testimonial extends Model
         ];
     }
 
+    public function photoUrl(): ?string
+    {
+        if (blank($this->photo)) {
+            return null;
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk('public')->url($this->photo);
+    }
+
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', ContentStatus::Published);

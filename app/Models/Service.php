@@ -37,6 +37,20 @@ class Service extends Model
         ];
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function imageUrl(): ?string
+    {
+        if (blank($this->image)) {
+            return null;
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk('public')->url($this->image);
+    }
+
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', ContentStatus::Published);

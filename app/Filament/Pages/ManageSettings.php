@@ -53,7 +53,6 @@ class ManageSettings extends Page implements HasForms
                                     ->directory('settings')
                                     ->disk('public')
                                     ->visibility('public'),
-                                Forms\Components\Textarea::make('about_excerpt')->rows(4)->columnSpanFull(),
                             ])
                             ->columns(2),
                         Forms\Components\Tabs\Tab::make('Contact')
@@ -79,6 +78,25 @@ class ManageSettings extends Page implements HasForms
                                     ->disk('public')
                                     ->visibility('public')
                                     ->columnSpanFull(),
+                            ])
+                            ->columns(2),
+                        Forms\Components\Tabs\Tab::make('About & mission')
+                            ->schema([
+                                Forms\Components\Textarea::make('about_excerpt')->rows(4)->columnSpanFull(),
+                                Forms\Components\Textarea::make('mission')->rows(4),
+                                Forms\Components\Textarea::make('vision')->rows(4),
+                            ])
+                            ->columns(2),
+                        Forms\Components\Tabs\Tab::make('Stats')
+                            ->schema([
+                                Forms\Components\TextInput::make('stat_years_value')->label('Years value')->placeholder('15+'),
+                                Forms\Components\TextInput::make('stat_years_label')->label('Years label')->placeholder('Years of experience'),
+                                Forms\Components\TextInput::make('stat_clients_value')->label('Clients value')->placeholder('200+'),
+                                Forms\Components\TextInput::make('stat_clients_label')->label('Clients label')->placeholder('Clients served'),
+                                Forms\Components\TextInput::make('stat_engagements_value')->label('Engagements value')->placeholder('500+'),
+                                Forms\Components\TextInput::make('stat_engagements_label')->label('Engagements label')->placeholder('Engagements completed'),
+                                Forms\Components\TextInput::make('stat_professionals_value')->label('Professionals value')->placeholder('12'),
+                                Forms\Components\TextInput::make('stat_professionals_label')->label('Professionals label')->placeholder('Qualified professionals'),
                             ])
                             ->columns(2),
                         Forms\Components\Tabs\Tab::make('Social')

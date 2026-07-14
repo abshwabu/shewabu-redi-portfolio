@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,7 +12,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                // Deep navy — primary brand
                 primary: {
                     50: '#E8EEF4',
                     100: '#C5D3E3',
@@ -26,7 +26,6 @@ export default {
                     950: '#071828',
                     DEFAULT: '#0B2545',
                 },
-                // Gold accent — trust & prestige for authorized accounting
                 accent: {
                     50: '#FBF6E8',
                     100: '#F5EAC7',
@@ -40,7 +39,6 @@ export default {
                     900: '#45350D',
                     DEFAULT: '#C9A227',
                 },
-                // Neutral grays with slight cool navy tint
                 surface: {
                     50: '#F7F8FA',
                     100: '#EEF0F3',
@@ -59,7 +57,11 @@ export default {
                 display: ['"Libre Baskerville"', ...defaultTheme.fontFamily.serif],
                 sans: ['"Source Sans 3"', ...defaultTheme.fontFamily.sans],
             },
+            boxShadow: {
+                card: '0 10px 30px -18px rgba(11, 37, 69, 0.45)',
+                'card-hover': '0 18px 40px -20px rgba(11, 37, 69, 0.55)',
+            },
         },
     },
-    plugins: [],
+    plugins: [typography],
 };

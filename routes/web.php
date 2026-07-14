@@ -10,22 +10,6 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Public website routes — Shewabu Redi Mohammed Authorized Accounting Firm
-|--------------------------------------------------------------------------
-|
-| Site architecture (scaffold phase — blank placeholder views):
-|  - Home
-|  - About the Firm / Our Team
-|  - Services hub + dedicated service pages
-|  - Industries
-|  - Insights
-|  - Contact
-|  - Legal (Privacy, Terms)
-|
-*/
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
@@ -33,11 +17,7 @@ Route::get('/about/team', [TeamController::class, 'index'])->name('team');
 
 Route::prefix('services')->name('services.')->group(function () {
     Route::get('/', [ServiceController::class, 'index'])->name('index');
-    Route::get('/audit', [ServiceController::class, 'audit'])->name('audit');
-    Route::get('/taxation', [ServiceController::class, 'taxation'])->name('taxation');
-    Route::get('/accounting', [ServiceController::class, 'accounting'])->name('accounting');
-    Route::get('/advisory', [ServiceController::class, 'advisory'])->name('advisory');
-    Route::get('/assurance', [ServiceController::class, 'assurance'])->name('assurance');
+    Route::get('/{service:slug}', [ServiceController::class, 'show'])->name('show');
 });
 
 Route::get('/industries', [IndustryController::class, 'index'])->name('industries');

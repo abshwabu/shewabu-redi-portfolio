@@ -2,37 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
     public function index(): View
     {
-        return view('services.index');
+        return view('services.index', [
+            'services' => Service::query()->published()->ordered()->get(),
+        ]);
     }
 
-    public function audit(): View
+    public function show(Service $service): View
     {
-        return view('services.audit');
-    }
+        abort_unless($service->status === \App\Enums\ContentStatus::Published, 404);
 
-    public function taxation(): View
-    {
-        return view('services.taxation');
-    }
+        $related = Service::query()
+            ->published()
+            ->whereKeyNot($service->id)
+            ->when(
+                filled($service->category),
+                fn ($query) => $query->where('category', $service->category)
+            )
+            ->ordered()
+            ->limit(3)
+            ->get();
 
-    public function accounting(): View
-    {
-        return view('services.accounting');
-    }
+        if ($related->count() < 3) {
+            $extra = Service::query()
+                ->published()
+                ->whereKeyNot($service->id)
+                ->whereNotIn('id', $related->pluck('id'))
+                ->ordered()
+                ->limit(3 - $related->count())
+                ->get();
 
-    public function advisory(): View
-    {
-        return view('services.advisory');
-    }
+            $related = $related->concat($extra);
+        }
 
-    public function assurance(): View
-    {
-        return view('services.assurance');
+        return view('services.show', [
+            'service' => $service,
+            'relatedServices' => $related,
+        ]);
     }
 }
