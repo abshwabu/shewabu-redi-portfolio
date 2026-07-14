@@ -36,9 +36,23 @@ class Post extends Model
         ];
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(TeamMember::class, 'team_member_id');
+    }
+
+    public function featuredImageUrl(): ?string
+    {
+        if (blank($this->featured_image)) {
+            return null;
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk('public')->url($this->featured_image);
     }
 
     public function scopePublished(Builder $query): Builder

@@ -21,6 +21,7 @@ class SiteSetting extends Model
         'city',
         'country',
         'map_embed_url',
+        'office_hours',
         'hero_heading',
         'hero_subheading',
         'hero_cta_label',
@@ -69,6 +70,11 @@ class SiteSetting extends Model
     public function heroImageUrl(): ?string
     {
         return $this->publicUrl($this->hero_image);
+    }
+
+    public function getGoogleMapsEmbedAttribute(): ?string
+    {
+        return $this->map_embed_url;
     }
 
     public function stats(): array

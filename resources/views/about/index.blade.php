@@ -75,7 +75,7 @@
                     <h2 class="section-title">Leadership &amp; team</h2>
                     <p class="section-lead">Meet the professionals who lead our audit, tax, and advisory engagements.</p>
                 </div>
-                <a href="{{ route('team') }}" class="btn-ghost shrink-0">
+                <a href="{{ route('team.index') }}" class="btn-ghost shrink-0">
                     View full team
                     <span aria-hidden="true">→</span>
                 </a>

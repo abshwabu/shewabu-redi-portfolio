@@ -62,7 +62,14 @@ class ManageSettings extends Page implements HasForms
                                 Forms\Components\TextInput::make('address')->columnSpanFull(),
                                 Forms\Components\TextInput::make('city'),
                                 Forms\Components\TextInput::make('country'),
-                                Forms\Components\TextInput::make('map_embed_url')->url()->columnSpanFull(),
+                                Forms\Components\TextInput::make('map_embed_url')
+                                    ->label('Google Maps embed URL')
+                                    ->url()
+                                    ->columnSpanFull()
+                                    ->helperText('Paste the iframe src URL from Google Maps embed code.'),
+                                Forms\Components\TextInput::make('office_hours')
+                                    ->placeholder('Mon–Fri, 8:30 AM – 5:30 PM')
+                                    ->columnSpanFull(),
                             ])
                             ->columns(2),
                         Forms\Components\Tabs\Tab::make('Hero')

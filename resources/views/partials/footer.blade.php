@@ -20,7 +20,7 @@
                 <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">Quick Links</h2>
                 <ul class="mt-4 space-y-2.5 text-sm">
                     <li><a href="{{ route('about') }}" class="text-primary-100 transition-colors hover:text-accent">About the Firm</a></li>
-                    <li><a href="{{ route('team') }}" class="text-primary-100 transition-colors hover:text-accent">Our Team</a></li>
+                    <li><a href="{{ route('team.index') }}" class="text-primary-100 transition-colors hover:text-accent">Our Team</a></li>
                     <li><a href="{{ route('services.index') }}" class="text-primary-100 transition-colors hover:text-accent">Services</a></li>
                     <li><a href="{{ route('industries') }}" class="text-primary-100 transition-colors hover:text-accent">Industries</a></li>
                     <li><a href="{{ route('insights.index') }}" class="text-primary-100 transition-colors hover:text-accent">Insights</a></li>

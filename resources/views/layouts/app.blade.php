@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="@yield('meta_description', 'Shewabu Redi Mohammed Authorized Accounting Firm — professional audit, tax, and advisory services.')">
 
     <title>@yield('title', 'Shewabu Redi Mohammed Authorized Accounting Firm')</title>

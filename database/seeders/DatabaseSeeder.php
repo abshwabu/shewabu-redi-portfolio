@@ -48,6 +48,8 @@ class DatabaseSeeder extends Seeder
             'address' => 'Bole Road, near Atlas Hotel',
             'city' => 'Addis Ababa',
             'country' => 'Ethiopia',
+            'map_embed_url' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.366489562!2d38.7578!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyOC4xIkU!5e0!3m2!1sen!2set!4v1',
+            'office_hours' => 'Mon–Fri, 8:30 AM – 5:30 PM',
             'hero_heading' => 'Clarity and confidence for your books',
             'hero_subheading' => 'Shewabu Redi Mohammed Authorized Accounting Firm supports businesses and organizations with audit, tax, bookkeeping, and advisory services delivered to professional standards.',
             'hero_cta_label' => 'Book a consultation',
