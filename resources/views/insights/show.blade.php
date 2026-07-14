@@ -10,7 +10,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(201,162,39,0.2),transparent_35%),linear-gradient(145deg,#0B2545,#15334E)]"></div>
         <div class="section-shell relative py-14 sm:py-18 lg:py-20">
             <a href="{{ route('insights.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-100 transition hover:text-accent">
-                <span aria-hidden="true">←</span> All insights
+                <span aria-hidden="true">←</span> {{ __('site.insights.all') }}
             </a>
             <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold uppercase tracking-[0.12em] text-accent-200">
                 @if ($post->category)
@@ -26,7 +26,7 @@
             @endif
             @if ($post->author)
                 <p class="mt-6 text-sm text-primary-100">
-                    By
+                    {{ __('site.team.by') }}
                     <a href="{{ route('team.show', $post->author) }}" class="font-semibold text-accent transition hover:text-accent-200">
                         {{ $post->author->name }}
                     </a>
@@ -60,8 +60,8 @@
     @if ($relatedPosts->isNotEmpty())
         <section class="section-pad bg-white">
             <div class="section-shell">
-                <p class="eyebrow">Continue reading</p>
-                <h2 class="section-title">Related insights</h2>
+                <p class="eyebrow">{{ __('site.insights.related_eyebrow') }}</p>
+                <h2 class="section-title">{{ __('site.insights.related_title') }}</h2>
                 <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($relatedPosts as $related)
                         <article class="surface-card surface-card-hover flex h-full flex-col">
@@ -73,7 +73,7 @@
                                 <p class="mt-2 flex-1 text-sm text-surface-600">{{ \Illuminate\Support\Str::limit($related->excerpt, 120) }}</p>
                             @endif
                             <a href="{{ route('insights.show', $related) }}" class="btn-ghost mt-5">
-                                Read article
+                                {{ __('site.cta.read_article') }}
                                 <span aria-hidden="true">→</span>
                             </a>
                         </article>

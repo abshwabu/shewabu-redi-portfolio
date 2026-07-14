@@ -10,7 +10,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(201,162,39,0.2),transparent_35%),linear-gradient(145deg,#0B2545,#15334E)]"></div>
         <div class="section-shell relative py-14 sm:py-18 lg:py-20">
             <a href="{{ route('services.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-100 transition hover:text-accent">
-                <span aria-hidden="true">←</span> All services
+                <span aria-hidden="true">←</span> {{ __('site.services.all_services') }}
             </a>
             @if ($service->category)
                 <p class="eyebrow mt-6 text-accent-200">{{ $service->category }}</p>
@@ -41,10 +41,10 @@
 
             <aside class="space-y-6 lg:sticky lg:top-28">
                 <div class="surface-card border-accent/25 bg-primary text-surface-50">
-                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Engage us</p>
-                    <h2 class="mt-3 font-display text-2xl font-bold">Need this service?</h2>
-                    <p class="mt-3 text-sm leading-relaxed text-primary-100">Share your timeline and reporting requirements — we will propose a clear scope and next step.</p>
-                    <a href="{{ route('contact') }}" class="btn-primary mt-6 w-full">Contact the firm</a>
+                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">{{ __('site.services.engage_eyebrow') }}</p>
+                    <h2 class="mt-3 font-display text-2xl font-bold">{{ __('site.services.engage_title') }}</h2>
+                    <p class="mt-3 text-sm leading-relaxed text-primary-100">{{ __('site.services.engage_copy') }}</p>
+                    <a href="{{ route('contact') }}" class="btn-primary mt-6 w-full">{{ __('site.cta.contact_firm') }}</a>
                 </div>
             </aside>
         </div>
@@ -53,8 +53,8 @@
     @if ($relatedServices->isNotEmpty())
         <section class="section-pad bg-white">
             <div class="section-shell">
-                <p class="eyebrow">Continue exploring</p>
-                <h2 class="section-title">Related services</h2>
+                <p class="eyebrow">{{ __('site.services.related_eyebrow') }}</p>
+                <h2 class="section-title">{{ __('site.services.related_title') }}</h2>
                 <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($relatedServices as $related)
                         <article class="surface-card surface-card-hover flex h-full flex-col">
@@ -64,7 +64,7 @@
                             <h3 class="mt-4 font-display text-lg font-bold text-primary">{{ $related->title }}</h3>
                             <p class="mt-2 flex-1 text-sm text-surface-600">{{ $related->summary }}</p>
                             <a href="{{ route('services.show', $related) }}" class="btn-ghost mt-5">
-                                Learn more
+                                {{ __('site.cta.learn_more') }}
                                 <span aria-hidden="true">→</span>
                             </a>
                         </article>

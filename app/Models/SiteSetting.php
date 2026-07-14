@@ -13,6 +13,7 @@ class SiteSetting extends Model
     protected $fillable = [
         'firm_name',
         'tagline',
+        'tagline_am',
         'logo',
         'favicon',
         'phone',
@@ -23,13 +24,19 @@ class SiteSetting extends Model
         'map_embed_url',
         'office_hours',
         'hero_heading',
+        'hero_heading_am',
         'hero_subheading',
+        'hero_subheading_am',
         'hero_cta_label',
+        'hero_cta_label_am',
         'hero_cta_url',
         'hero_image',
         'about_excerpt',
+        'about_excerpt_am',
         'mission',
+        'mission_am',
         'vision',
+        'vision_am',
         'stat_years_label',
         'stat_years_value',
         'stat_clients_label',
@@ -47,12 +54,19 @@ class SiteSetting extends Model
         'seo_keywords',
         'og_image',
         'privacy_body',
+        'privacy_body_am',
         'terms_body',
+        'terms_body_am',
         'industries_heading',
+        'industries_heading_am',
         'industries_intro',
+        'industries_intro_am',
         'industries_body',
+        'industries_body_am',
         'home_cta_heading',
+        'home_cta_heading_am',
         'home_cta_body',
+        'home_cta_body_am',
     ];
 
     public static function current(): self
@@ -92,6 +106,17 @@ class SiteSetting extends Model
     public function getGoogleMapsEmbedAttribute(): ?string
     {
         return $this->map_embed_url;
+    }
+
+    public function t(string $attribute): mixed
+    {
+        if (app()->getLocale() !== 'am') {
+            return $this->{$attribute};
+        }
+
+        $translated = $this->{$attribute.'_am'} ?? null;
+
+        return filled($translated) ? $translated : $this->{$attribute};
     }
 
     public function stats(): array

@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Our Team | '.$siteSettings->firm_name)
-@section('meta_description', 'Meet the audit, tax, and advisory professionals at '.$siteSettings->firm_name.'.')
+@section('title', __('site.team.title').' | '.$siteSettings->firm_name)
+@section('meta_description', __('site.team.lead').' — '.$siteSettings->firm_name)
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
         <div class="absolute inset-0 bg-[linear-gradient(135deg,#0B2545_0%,#1E4568_55%,#0B2545_100%)]"></div>
         <div class="section-shell relative py-16 sm:py-20">
-            <p class="eyebrow text-accent-200">People</p>
-            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">Our Team</h1>
+            <p class="eyebrow text-accent-200">{{ __('site.team.eyebrow') }}</p>
+            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">{{ __('site.team.title') }}</h1>
             <p class="mt-5 max-w-2xl text-base leading-relaxed text-primary-100 sm:text-lg">
-                Qualified professionals committed to clarity, compliance, and practical financial guidance.
+                {{ __('site.team.lead') }}
             </p>
         </div>
     </section>
@@ -39,13 +39,13 @@
                                 <p class="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-accent-700">{{ $member->role }}</p>
                             @endif
                             <span class="btn-ghost mx-auto mt-5">
-                                View profile
+                                {{ __('site.cta.view_profile') }}
                                 <span aria-hidden="true">→</span>
                             </span>
                         </a>
                     </article>
                 @empty
-                    <p class="text-surface-600 sm:col-span-2 lg:col-span-4">No team members published yet.</p>
+                    <p class="text-surface-600 sm:col-span-2 lg:col-span-4">{{ __('site.team.empty') }}</p>
                 @endforelse
             </div>
         </div>

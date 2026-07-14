@@ -8,28 +8,28 @@
                     </span>
                     <span>
                         <span class="block font-display text-base font-bold text-surface-50">Shewabu Redi</span>
-                        <span class="block text-xs uppercase tracking-[0.1em] text-primary-200">Authorized Accounting Firm</span>
+                        <span class="block text-xs uppercase tracking-[0.1em] text-primary-200">{{ __('site.brand.authorized_firm') }}</span>
                     </span>
                 </a>
                 <p class="mt-4 max-w-sm text-sm leading-relaxed text-primary-100">
-                    {{ $siteSettings->about_excerpt ? \Illuminate\Support\Str::limit($siteSettings->about_excerpt, 140) : 'Professional audit, taxation, accounting, and advisory services delivered with integrity and regulatory excellence.' }}
+                    {{ $siteSettings->t('about_excerpt') ? \Illuminate\Support\Str::limit($siteSettings->t('about_excerpt'), 140) : __('site.brand.footer_fallback') }}
                 </p>
             </div>
 
             <div>
-                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">Quick Links</h2>
+                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">{{ __('site.footer.quick_links') }}</h2>
                 <ul class="mt-4 space-y-2.5 text-sm">
-                    <li><a href="{{ route('about') }}" class="text-primary-100 transition-colors hover:text-accent">About the Firm</a></li>
-                    <li><a href="{{ route('team.index') }}" class="text-primary-100 transition-colors hover:text-accent">Our Team</a></li>
-                    <li><a href="{{ route('services.index') }}" class="text-primary-100 transition-colors hover:text-accent">Services</a></li>
-                    <li><a href="{{ route('industries') }}" class="text-primary-100 transition-colors hover:text-accent">Industries</a></li>
-                    <li><a href="{{ route('insights.index') }}" class="text-primary-100 transition-colors hover:text-accent">Insights</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-primary-100 transition-colors hover:text-accent">Contact</a></li>
+                    <li><a href="{{ route('about') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.footer.about_firm') }}</a></li>
+                    <li><a href="{{ route('team.index') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.footer.our_team') }}</a></li>
+                    <li><a href="{{ route('services.index') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.footer.services') }}</a></li>
+                    <li><a href="{{ route('industries') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.nav.industries') }}</a></li>
+                    <li><a href="{{ route('insights.index') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.nav.insights') }}</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.nav.contact') }}</a></li>
                 </ul>
             </div>
 
             <div>
-                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">Services</h2>
+                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">{{ __('site.footer.services') }}</h2>
                 <ul class="mt-4 space-y-2.5 text-sm">
                     @forelse ($footerServices as $service)
                         <li>
@@ -38,13 +38,13 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="{{ route('services.index') }}" class="text-primary-100 transition-colors hover:text-accent">All services</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-primary-100 transition-colors hover:text-accent">{{ __('site.footer.all_services') }}</a></li>
                     @endforelse
                 </ul>
             </div>
 
             <div>
-                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">Contact</h2>
+                <h2 class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">{{ __('site.footer.contact') }}</h2>
                 <ul class="mt-4 space-y-3 text-sm text-primary-100">
                     <li class="flex gap-3">
                         <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
@@ -93,11 +93,11 @@
 
         <div class="mt-12 flex flex-col gap-4 border-t border-primary-700 pt-8 sm:flex-row sm:items-center sm:justify-between">
             <p class="text-xs text-primary-200">
-                &copy; {{ date('Y') }} {{ $siteSettings->firm_name }}. All rights reserved.
+                &copy; {{ date('Y') }} {{ $siteSettings->firm_name }}. {{ __('site.footer.rights') }}
             </p>
             <div class="flex gap-4 text-xs">
-                <a href="{{ route('privacy') }}" class="text-primary-200 transition-colors hover:text-accent">Privacy Policy</a>
-                <a href="{{ route('terms') }}" class="text-primary-200 transition-colors hover:text-accent">Terms of Use</a>
+                <a href="{{ route('privacy') }}" class="text-primary-200 transition-colors hover:text-accent">{{ __('site.footer.privacy') }}</a>
+                <a href="{{ route('terms') }}" class="text-primary-200 transition-colors hover:text-accent">{{ __('site.footer.terms') }}</a>
             </div>
         </div>
     </div>

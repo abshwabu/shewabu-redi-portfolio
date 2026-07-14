@@ -127,6 +127,24 @@ class ManageSettings extends Page implements HasForms
                                     ->columnSpanFull(),
                             ])
                             ->columns(2),
+                        Forms\Components\Tabs\Tab::make('Amharic')
+                            ->schema([
+                                Forms\Components\TextInput::make('tagline_am')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\TextInput::make('hero_heading_am')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('hero_subheading_am')->rows(3)->columnSpanFull(),
+                                Forms\Components\TextInput::make('hero_cta_label_am')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('about_excerpt_am')->rows(4)->columnSpanFull(),
+                                Forms\Components\Textarea::make('mission_am')->rows(4),
+                                Forms\Components\Textarea::make('vision_am')->rows(4),
+                                Forms\Components\TextInput::make('home_cta_heading_am')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('home_cta_body_am')->rows(3)->columnSpanFull(),
+                                Forms\Components\TextInput::make('industries_heading_am')->maxLength(255)->columnSpanFull(),
+                                Forms\Components\Textarea::make('industries_intro_am')->rows(3)->columnSpanFull(),
+                                Forms\Components\RichEditor::make('industries_body_am')->columnSpanFull(),
+                                Forms\Components\RichEditor::make('privacy_body_am')->columnSpanFull(),
+                                Forms\Components\RichEditor::make('terms_body_am')->columnSpanFull(),
+                            ])
+                            ->columns(2),
                         Forms\Components\Tabs\Tab::make('Pages')
                             ->schema([
                                 Forms\Components\TextInput::make('industries_heading')->maxLength(255)->columnSpanFull(),

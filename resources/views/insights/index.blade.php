@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Insights | '.$siteSettings->firm_name)
+@section('title', __('site.insights.title').' | '.$siteSettings->firm_name)
 @section('meta_description', $siteSettings->seo_description)
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
         <div class="absolute inset-0 bg-[linear-gradient(135deg,#0B2545_0%,#1E4568_55%,#0B2545_100%)]"></div>
         <div class="section-shell relative py-16 sm:py-20">
-            <p class="eyebrow text-accent-200">Knowledge</p>
-            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">Insights</h1>
+            <p class="eyebrow text-accent-200">{{ __('site.insights.eyebrow') }}</p>
+            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">{{ __('site.insights.title') }}</h1>
             <p class="mt-5 max-w-2xl text-base leading-relaxed text-primary-100 sm:text-lg">
-                Practical guidance on tax, audit, compliance, and financial management for Ethiopian businesses.
+                {{ __('site.insights.lead') }}
             </p>
         </div>
     </section>
@@ -50,19 +50,19 @@
                                     <p class="mt-3 flex-1 text-sm leading-relaxed text-surface-600">{{ $post->excerpt }}</p>
                                 @endif
                                 <span class="btn-ghost mt-5 self-start">
-                                    Read article
+                                    {{ __('site.cta.read_article') }}
                                     <span aria-hidden="true">→</span>
                                 </span>
                             </div>
                         </a>
                     </article>
                 @empty
-                    <p class="text-surface-600 sm:col-span-2 lg:col-span-3">No published articles yet.</p>
+                    <p class="text-surface-600 sm:col-span-2 lg:col-span-3">{{ __('site.insights.empty') }}</p>
                 @endforelse
             </div>
 
             @if ($posts->hasPages())
-                <nav class="mt-12 flex justify-center" aria-label="Insights pagination">
+                <nav class="mt-12 flex justify-center" aria-label="{{ __('site.insights.pagination') }}">
                     {{ $posts->links() }}
                 </nav>
             @endif

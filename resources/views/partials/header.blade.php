@@ -1,11 +1,11 @@
 @php
     $navLinks = [
-        ['label' => 'Home', 'route' => 'home'],
-        ['label' => 'About', 'route' => 'about'],
-        ['label' => 'Services', 'route' => 'services.index'],
-        ['label' => 'Industries', 'route' => 'industries'],
-        ['label' => 'Insights', 'route' => 'insights.index'],
-        ['label' => 'Contact', 'route' => 'contact'],
+        ['label' => __('site.nav.home'), 'route' => 'home'],
+        ['label' => __('site.nav.about'), 'route' => 'about'],
+        ['label' => __('site.nav.services'), 'route' => 'services.index'],
+        ['label' => __('site.nav.industries'), 'route' => 'industries'],
+        ['label' => __('site.nav.insights'), 'route' => 'insights.index'],
+        ['label' => __('site.nav.contact'), 'route' => 'contact'],
     ];
 @endphp
 
@@ -16,9 +16,8 @@
     class="sticky top-0 z-50 border-b transition-colors duration-300"
     :class="scrolled || open ? 'border-surface-200 bg-surface-50/95 backdrop-blur-md shadow-sm' : 'border-transparent bg-surface-50'"
 >
-    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-[4.5rem] lg:px-8">
-        {{-- Logo --}}
-        <a href="{{ route('home') }}" class="group flex min-w-0 shrink-0 items-center gap-3" aria-label="Shewabu Redi home">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8">
+        <a href="{{ route('home') }}" class="group flex min-w-0 shrink-0 items-center gap-3" aria-label="{{ __('site.home_aria') }}">
             <span class="flex h-9 w-9 items-center justify-center bg-primary text-sm font-display font-bold tracking-wide text-accent-100 sm:h-10 sm:w-10">
                 SR
             </span>
@@ -27,12 +26,11 @@
                     Shewabu Redi
                 </span>
                 <span class="hidden truncate text-[0.65rem] font-medium uppercase tracking-[0.12em] text-surface-500 sm:block">
-                    Authorized Accounting Firm
+                    {{ __('site.brand.authorized_firm') }}
                 </span>
             </span>
         </a>
 
-        {{-- Desktop nav --}}
         <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
             @foreach ($navLinks as $link)
                 <a
@@ -48,35 +46,34 @@
             @endforeach
         </nav>
 
-        {{-- Desktop CTA --}}
-        <div class="hidden lg:block">
+        <div class="flex items-center gap-2 sm:gap-3">
+            @include('partials.language-toggle')
+
             <a
                 href="{{ route('contact') }}"
-                class="inline-flex items-center bg-primary px-4 py-2.5 text-sm font-semibold text-surface-50 transition-colors duration-200 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                class="hidden items-center bg-primary px-4 py-2.5 text-sm font-semibold text-surface-50 transition-colors duration-200 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:inline-flex"
             >
-                Get in Touch
+                {{ __('site.cta.get_in_touch') }}
             </a>
-        </div>
 
-        {{-- Mobile hamburger --}}
-        <button
-            type="button"
-            class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
-            @click="open = !open"
-            :aria-expanded="open.toString()"
-            aria-controls="mobile-nav"
-            aria-label="Toggle navigation menu"
-        >
-            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-            <svg x-cloak x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
+            <button
+                type="button"
+                class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+                @click="open = !open"
+                :aria-expanded="open.toString()"
+                aria-controls="mobile-nav"
+                aria-label="{{ __('site.toggle_nav') }}"
+            >
+                <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+                <svg x-cloak x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
     </div>
 
-    {{-- Mobile menu --}}
     <div
         id="mobile-nav"
         x-cloak
@@ -109,7 +106,7 @@
                 @click="open = false"
                 class="mt-2 inline-flex min-h-11 items-center justify-center bg-primary px-4 py-3 text-sm font-semibold text-surface-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-                Get in Touch
+                {{ __('site.cta.get_in_touch') }}
             </a>
         </nav>
     </div>

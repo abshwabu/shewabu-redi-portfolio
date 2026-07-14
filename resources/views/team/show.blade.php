@@ -10,7 +10,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,162,39,0.18),transparent_40%),linear-gradient(145deg,#0B2545,#15334E)]"></div>
         <div class="section-shell relative py-14 sm:py-18 lg:py-20">
             <a href="{{ route('team.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-100 transition hover:text-accent">
-                <span aria-hidden="true">←</span> All team members
+                <span aria-hidden="true">←</span> {{ __('site.team.all_members') }}
             </a>
             <div class="mt-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
                 @if ($member->photoUrl())
@@ -45,32 +45,32 @@
                         {!! $member->bio !!}
                     </div>
                 @else
-                    <p class="text-surface-600">Profile details will be added soon.</p>
+                    <p class="text-surface-600">{{ __('site.team.profile_soon') }}</p>
                 @endif
             </article>
 
             <aside class="space-y-6 lg:sticky lg:top-28">
                 <div class="surface-card">
-                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Contact</p>
+                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">{{ __('site.team.contact_heading') }}</p>
                     <ul class="mt-4 space-y-4 text-sm text-surface-700">
                         @if ($member->email)
                             <li>
-                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">Email</span>
+                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">{{ __('site.team.email') }}</span>
                                 <a href="mailto:{{ $member->email }}" class="mt-1 inline-flex min-h-11 items-center font-semibold text-primary transition hover:text-accent">{{ $member->email }}</a>
                             </li>
                         @endif
                         @if ($member->phone)
                             <li>
-                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">Phone</span>
+                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">{{ __('site.team.phone') }}</span>
                                 <a href="tel:{{ preg_replace('/\s+/', '', $member->phone) }}" class="mt-1 inline-flex min-h-11 items-center font-semibold text-primary transition hover:text-accent">{{ $member->phone }}</a>
                             </li>
                         @endif
                         @if ($member->linkedin_url)
                             <li>
-                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">LinkedIn</span>
+                                <span class="block text-xs font-semibold uppercase tracking-[0.1em] text-surface-500">{{ __('site.team.linkedin') }}</span>
                                 <a href="{{ $member->linkedin_url }}" class="mt-1 inline-flex min-h-11 items-center font-semibold text-primary transition hover:text-accent" target="_blank" rel="noopener noreferrer">
-                                    View profile
-                                    <span class="sr-only">(opens in new tab)</span>
+                                    {{ __('site.team.linkedin_view') }}
+                                    <span class="sr-only">{{ __('site.team.linkedin_opens') }}</span>
                                 </a>
                             </li>
                         @endif
@@ -78,9 +78,9 @@
                 </div>
 
                 <div class="surface-card border-accent/25 bg-primary text-surface-50">
-                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Work with us</p>
-                    <p class="mt-3 text-sm leading-relaxed text-primary-100">Discuss your audit, tax, or advisory needs with our team.</p>
-                    <a href="{{ route('contact') }}" class="btn-primary mt-6 w-full">Get in touch</a>
+                    <p class="text-sm font-semibold uppercase tracking-[0.14em] text-accent">{{ __('site.team.work_eyebrow') }}</p>
+                    <p class="mt-3 text-sm leading-relaxed text-primary-100">{{ __('site.team.work_copy') }}</p>
+                    <a href="{{ route('contact') }}" class="btn-primary mt-6 w-full">{{ __('site.cta.get_in_touch_short') }}</a>
                 </div>
             </aside>
         </div>

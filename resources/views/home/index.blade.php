@@ -11,7 +11,7 @@
             @if ($settings->heroImageUrl())
                 <x-firm-img
                     :src="$settings->heroImageUrl()"
-                    :alt="$settings->hero_heading ?: 'Shewabu Redi accounting firm'"
+                    :alt="$settings->t('hero_heading') ?: __('site.home.hero_fallback')"
                     :lazy="false"
                     width="1920"
                     height="1080"
@@ -27,17 +27,17 @@
         <div class="section-shell relative flex min-h-[78vh] flex-col justify-center py-20 lg:min-h-[86vh] lg:py-28">
             <p class="eyebrow fade-up text-accent-200">{{ $settings->firm_name }}</p>
             <h1 class="fade-up-delayed mt-5 max-w-3xl font-display text-4xl font-bold leading-tight text-surface-50 sm:text-5xl lg:text-6xl">
-                {{ $settings->hero_heading ?: 'Professional accounting you can trust' }}
+                {{ $settings->t('hero_heading') ?: __('site.home.hero_fallback') }}
             </h1>
             <p class="fade-up-late mt-6 max-w-2xl text-base leading-relaxed text-primary-100 sm:text-lg">
-                {{ $settings->hero_subheading }}
+                {{ $settings->t('hero_subheading') }}
             </p>
             <div class="fade-up-late mt-10 flex flex-wrap gap-4">
                 <a href="{{ url($settings->hero_cta_url ?: '/contact') }}" class="btn-primary">
-                    {{ $settings->hero_cta_label ?: 'Get in Touch' }}
+                    {{ $settings->t('hero_cta_label') ?: __('site.cta.get_in_touch') }}
                 </a>
                 <a href="{{ route('services.index') }}" class="btn-secondary">
-                    Explore services
+                    {{ __('site.cta.explore_services') }}
                 </a>
             </div>
         </div>
@@ -48,12 +48,12 @@
         <div class="section-shell">
             <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="eyebrow">What we deliver</p>
-                    <h2 class="section-title">Our Services</h2>
-                    <p class="section-lead">Specialist support across tax, audit, accounting, and advisory — structured for clarity from first conversation to deliverable.</p>
+                    <p class="eyebrow">{{ __('site.home.services_eyebrow') }}</p>
+                    <h2 class="section-title">{{ __('site.home.services_title') }}</h2>
+                    <p class="section-lead">{{ __('site.home.services_lead') }}</p>
                 </div>
                 <a href="{{ route('services.index') }}" class="btn-ghost shrink-0">
-                    View all services
+                    {{ __('site.cta.view_all_services') }}
                     <span aria-hidden="true">→</span>
                 </a>
             </div>
@@ -67,12 +67,12 @@
                         <h3 class="mt-5 font-display text-xl font-bold text-primary">{{ $service->title }}</h3>
                         <p class="mt-3 flex-1 text-sm leading-relaxed text-surface-600">{{ $service->summary }}</p>
                         <a href="{{ route('services.show', $service) }}" class="btn-ghost mt-6">
-                            Learn more
+                            {{ __('site.cta.learn_more') }}
                             <span aria-hidden="true">→</span>
                         </a>
                     </article>
                 @empty
-                    <p class="text-surface-600 sm:col-span-2 lg:col-span-3">Featured services will appear here once published in the admin panel.</p>
+                    <p class="text-surface-600 sm:col-span-2 lg:col-span-3">{{ __('site.home.services_empty') }}</p>
                 @endforelse
             </div>
         </div>
@@ -82,16 +82,16 @@
     <section class="section-pad relative overflow-hidden bg-white">
         <div class="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-[radial-gradient(circle_at_center,rgba(201,162,39,0.12),transparent_70%)]"></div>
         <div class="section-shell relative">
-            <p class="eyebrow">Why Shewabu Redi</p>
-            <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-lead">Authorized practice standards, practical communication, and engagement discipline that busy leadership teams can rely on.</p>
+            <p class="eyebrow">{{ __('site.home.why_eyebrow') }}</p>
+            <h2 class="section-title">{{ __('site.home.why_title') }}</h2>
+            <p class="section-lead">{{ __('site.home.why_lead') }}</p>
 
             <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ([
-                    ['title' => 'Authorized expertise', 'copy' => 'Engagements grounded in professional standards and local regulatory fluency.', 'icon' => 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'],
-                    ['title' => 'Clear deliverables', 'copy' => 'Reports and advice written for decision-makers — precise, timely, and actionable.', 'icon' => 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z'],
-                    ['title' => 'Partnership mindset', 'copy' => 'We stay close during filing seasons and growth moments, not only at year-end.', 'icon' => 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z'],
-                    ['title' => 'Ethical diligence', 'copy' => 'Independence, confidentiality, and quality control sit at the centre of every assignment.', 'icon' => 'M12 3v2.25m6.364 1.386l-1.591 1.591M21 12h-2.25m-1.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z'],
+                    ['title' => __('site.home.why_expertise_title'), 'copy' => __('site.home.why_expertise_copy'), 'icon' => 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'],
+                    ['title' => __('site.home.why_deliverables_title'), 'copy' => __('site.home.why_deliverables_copy'), 'icon' => 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z'],
+                    ['title' => __('site.home.why_partnership_title'), 'copy' => __('site.home.why_partnership_copy'), 'icon' => 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z'],
+                    ['title' => __('site.home.why_ethics_title'), 'copy' => __('site.home.why_ethics_copy'), 'icon' => 'M12 3v2.25m6.364 1.386l-1.591 1.591M21 12h-2.25m-1.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z'],
                 ] as $prop)
                     <article class="surface-card h-full">
                         <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-accent/15 text-accent-700">
@@ -143,14 +143,14 @@
             <div class="section-shell">
                 <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p class="eyebrow">Client voice</p>
-                        <h2 class="section-title">What clients say</h2>
+                        <p class="eyebrow">{{ __('site.home.testimonials_eyebrow') }}</p>
+                        <h2 class="section-title">{{ __('site.home.testimonials_title') }}</h2>
                     </div>
                     <div class="flex gap-2">
-                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="prev()" aria-label="Previous testimonial">
+                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="prev()" aria-label="{{ __('site.home.testimonial_prev') }}">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
                         </button>
-                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="next()" aria-label="Next testimonial">
+                        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-surface-300 bg-white text-primary transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" @click="next()" aria-label="{{ __('site.home.testimonial_next') }}">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
                         </button>
                     </div>
@@ -207,7 +207,7 @@
                             class="inline-flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                             @click="go({{ $index }})"
                             :aria-current="active === {{ $index }} ? 'true' : 'false'"
-                            aria-label="Show testimonial {{ $index + 1 }}"
+                            aria-label="{{ __('site.home.testimonial_show', ['number' => $index + 1]) }}"
                         >
                             <span
                                 class="block rounded-full transition-all"
@@ -225,13 +225,13 @@
     <section class="section-pad bg-primary text-surface-50">
         <div class="section-shell grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
-                <p class="eyebrow text-accent">Next step</p>
-                <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">{{ $settings->home_cta_heading ?: 'Ready for clearer books and stronger compliance?' }}</h2>
-                <p class="mt-4 max-w-xl text-primary-100">{{ $settings->home_cta_body ?: 'Tell us about your filing calendar, audit needs, or growth plans — we will respond with a focused next step.' }}</p>
+                <p class="eyebrow text-accent">{{ __('site.home.cta_eyebrow') }}</p>
+                <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">{{ $settings->t('home_cta_heading') ?: __('site.home.cta_heading_fallback') }}</h2>
+                <p class="mt-4 max-w-xl text-primary-100">{{ $settings->t('home_cta_body') }}</p>
             </div>
             <div class="flex flex-wrap gap-4 lg:justify-end">
-                <a href="{{ route('contact') }}" class="btn-primary">Book a consultation</a>
-                <a href="{{ route('about') }}" class="btn-secondary">About the firm</a>
+                <a href="{{ route('contact') }}" class="btn-primary">{{ __('site.cta.book_consultation') }}</a>
+                <a href="{{ route('about') }}" class="btn-secondary">{{ __('site.home.cta_about') }}</a>
             </div>
         </div>
     </section>

@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Contact | '.$siteSettings->firm_name)
-@section('meta_description', 'Contact '.$siteSettings->firm_name.' for audit, tax, and advisory services.')
+@section('title', __('site.contact.title').' | '.$siteSettings->firm_name)
+@section('meta_description', __('site.contact.lead').' — '.$siteSettings->firm_name)
 
 @section('content')
     <section class="relative overflow-hidden bg-primary text-surface-50">
         <div class="absolute inset-0 bg-[linear-gradient(135deg,#0B2545_0%,#1E4568_55%,#0B2545_100%)]"></div>
         <div class="section-shell relative py-16 sm:py-20">
-            <p class="eyebrow text-accent-200">Get in touch</p>
-            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">Contact Us</h1>
+            <p class="eyebrow text-accent-200">{{ __('site.contact.eyebrow') }}</p>
+            <h1 class="mt-4 font-display text-4xl font-bold sm:text-5xl">{{ __('site.contact.title') }}</h1>
             <p class="mt-5 max-w-2xl text-base leading-relaxed text-primary-100 sm:text-lg">
-                Share your requirements and we will respond with next steps for your audit, tax, or advisory engagement.
+                {{ __('site.contact.lead') }}
             </p>
         </div>
     </section>
@@ -56,22 +56,22 @@
                             }
 
                             if (! response.ok) {
-                                this.error = 'Something went wrong. Please try again.';
+                                this.error = @js(__('site.contact.error_generic'));
                                 return;
                             }
 
                             this.success = true;
                             this.form = { name: '', email: '', phone: '', subject: '', message: '' };
                         } catch (e) {
-                            this.error = 'Unable to send your message. Please check your connection and try again.';
+                            this.error = @js(__('site.contact.error_network'));
                         } finally {
                             this.submitting = false;
                         }
                     },
                 }"
             >
-                <h2 class="font-display text-2xl font-bold text-primary">Send a message</h2>
-                <p class="mt-2 text-sm text-surface-600">All fields marked with * are required.</p>
+                <h2 class="font-display text-2xl font-bold text-primary">{{ __('site.contact.form_title') }}</h2>
+                <p class="mt-2 text-sm text-surface-600">{{ __('site.contact.form_required') }}</p>
 
                 <div
                     x-show="success"
@@ -79,8 +79,8 @@
                     class="mt-6 rounded-lg border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-800"
                     role="status"
                 >
-                    <p class="font-semibold">Message sent successfully.</p>
-                    <p class="mt-1">Thank you for contacting us. We will respond shortly.</p>
+                    <p class="font-semibold">{{ __('site.contact.success_title') }}</p>
+                    <p class="mt-1">{{ __('site.contact.success_copy') }}</p>
                 </div>
 
                 <div
@@ -93,7 +93,7 @@
 
                 <form class="mt-6 space-y-5" @submit.prevent="submit" x-show="! success" novalidate>
                     <div>
-                        <label for="contact-name" class="block text-sm font-semibold text-primary">Name *</label>
+                        <label for="contact-name" class="block text-sm font-semibold text-primary">{{ __('site.contact.name') }} *</label>
                         <input
                             id="contact-name"
                             type="text"
@@ -109,7 +109,7 @@
                     </div>
 
                     <div>
-                        <label for="contact-email" class="block text-sm font-semibold text-primary">Email *</label>
+                        <label for="contact-email" class="block text-sm font-semibold text-primary">{{ __('site.contact.email') }} *</label>
                         <input
                             id="contact-email"
                             type="email"
@@ -126,7 +126,7 @@
                     </div>
 
                     <div>
-                        <label for="contact-phone" class="block text-sm font-semibold text-primary">Phone</label>
+                        <label for="contact-phone" class="block text-sm font-semibold text-primary">{{ __('site.contact.phone') }}</label>
                         <input
                             id="contact-phone"
                             type="tel"
@@ -140,7 +140,7 @@
                     </div>
 
                     <div>
-                        <label for="contact-subject" class="block text-sm font-semibold text-primary">Subject</label>
+                        <label for="contact-subject" class="block text-sm font-semibold text-primary">{{ __('site.contact.subject') }}</label>
                         <input
                             id="contact-subject"
                             type="text"
@@ -152,7 +152,7 @@
                     </div>
 
                     <div>
-                        <label for="contact-message" class="block text-sm font-semibold text-primary">Message *</label>
+                        <label for="contact-message" class="block text-sm font-semibold text-primary">{{ __('site.contact.message') }} *</label>
                         <textarea
                             id="contact-message"
                             rows="5"
@@ -171,8 +171,8 @@
                         class="btn-primary w-full min-h-12 disabled:cursor-not-allowed disabled:opacity-60"
                         :disabled="submitting"
                     >
-                        <span x-show="! submitting">Send message</span>
-                        <span x-show="submitting" x-cloak>Sending…</span>
+                        <span x-show="! submitting">{{ __('site.cta.send_message') }}</span>
+                        <span x-show="submitting" x-cloak>{{ __('site.cta.sending') }}</span>
                     </button>
                 </form>
             </div>
@@ -180,7 +180,7 @@
             {{-- Office info + map --}}
             <div class="space-y-6">
                 <div class="surface-card">
-                    <h2 class="font-display text-2xl font-bold text-primary">Office</h2>
+                    <h2 class="font-display text-2xl font-bold text-primary">{{ __('site.contact.office') }}</h2>
                     <ul class="mt-5 space-y-4 text-sm text-surface-700">
                         @php
                             $addressLine = collect([$settings->address, $settings->city, $settings->country])->filter()->implode(', ');
@@ -226,7 +226,7 @@
                         <div class="aspect-[4/3] w-full sm:aspect-video">
                             <iframe
                                 src="{{ $settings->google_maps_embed }}"
-                                title="Office location map"
+                                title="{{ __('site.contact.map_title') }}"
                                 class="h-full w-full border-0"
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"

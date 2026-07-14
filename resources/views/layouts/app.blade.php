@@ -19,7 +19,7 @@
 </head>
 <body class="flex min-h-screen flex-col font-sans text-surface-800 antialiased">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-4 focus:py-2 focus:text-primary focus:outline-none">
-        Skip to main content
+        {{ __('site.skip_to_main') }}
     </a>
 
     @include('partials.header')

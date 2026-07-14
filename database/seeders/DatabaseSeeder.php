@@ -78,6 +78,20 @@ class DatabaseSeeder extends Seeder
             'terms_body' => '<p>This website provides general information about our firm and services. It does not constitute professional advice. Engagements are governed by separate engagement letters agreed with clients.</p><p>Content on this site may be updated without notice. By using this website you agree not to misuse forms, attempt unauthorized access, or reproduce materials without permission.</p>',
             'home_cta_heading' => 'Ready for clearer books and stronger compliance?',
             'home_cta_body' => 'Tell us about your filing calendar, audit needs, or growth plans — we will respond with a focused next step.',
+            'tagline_am' => 'የታመኑ የኦዲት፣ የግብር እና የምክር አገልግሎቶች',
+            'hero_heading_am' => 'ለመዝገብዎ ግልጽነት እና ማመን',
+            'hero_subheading_am' => 'ሸዋቡ ሬዲ ሙሐመድ የተፈቀደ የሂሳብ ኦዲት ኩባንያ ኦዲት፣ ግብር፣ የሂሳብ መዝገብ እና የምክር አገልግሎቶችን በሙያዊ ደረጃ ይሰጣል።',
+            'hero_cta_label_am' => 'ምክክር ያስይዙ',
+            'about_excerpt_am' => 'በኢትዮጵያ ውስጥ ለደንበኞች በአኗኗርነት፣ በህግ ተገዢነት እና በተግባራዊ የፋይናንስ መመሪያ የምናገለግል የተፈቀደ የሂሳብ ኦዲት ኩባንያ ነን።',
+            'mission_am' => 'የፋይናንስ አኗኗርን የሚያጠናክሩ አስተማማኝ የኦዲት፣ የግብር እና የምክር አገልግሎቶችን ማቅረብ።',
+            'vision_am' => 'በግልጽነት፣ በስነ-ምግባር እና በቆይታ ዝምድና ለሚታወቅ የተፈቀደ የሂሳብ ኦዲት አጋር መሆን።',
+            'industries_heading_am' => 'የምናገለግላቸው ዘርፎች',
+            'industries_intro_am' => 'በንግድ፣ በሙያዊ አገልግሎት፣ በኤንጂኦዎች እና በእየጎለበቱ ያሉ ድርጅቶች ላይ ተሞክሮ።',
+            'industries_body_am' => '<p>በችርቻሮ እና በስርጭት፣ በማኑፋክቸሪንግ፣ በሙያዊ አገልግሎት፣ በእንግዳ ቤት፣ በግንባታ እና በማኅበራዊ ድርጅቶች ውስጥ ደንበኞችን እናገለግላለን።</p>',
+            'privacy_body_am' => '<p>ሸዋቡ ሬዲ ሙሐመድ የተፈቀደ የሂሳብ ኦዲት ኩባንያ የግላዊነትዎን ይከብራል። በድረ-ገጻችን በኩል የሚላኩ መረጃዎች ለመጠየቅዎ ብቻ ይውላሉ።</p>',
+            'terms_body_am' => '<p>ይህ ድረ-ገጽ ስለ ኩባንያው እና አገልግሎቶች አጠቃላይ መረጃ ይሰጣል። ሙያዊ ምክር አይደለም።</p>',
+            'home_cta_heading_am' => 'የበለጠ ግልጽ መዝገብ እና ጠንካራ ተገዢነት ይፈልጋሉ?',
+            'home_cta_body_am' => 'ስለ ግብር መርሃ ግብር፣ የኦዲት ፍላጎት ወይም የእድገት እቅድ ይንገሩን — ትኩረት የተደረገበት ቀጣይ እርምጃ እንሰጣለን።',
         ]);
     }
 
